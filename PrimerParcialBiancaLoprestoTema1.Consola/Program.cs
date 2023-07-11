@@ -17,11 +17,11 @@
                 altura = Double.Parse(Console.ReadLine());
                 Console.Write("Ingrese el Radio del Cilindro: ");
                 radio = Double.Parse(Console.ReadLine());
-                if (altura != 0 && radio != 0)
+                if (altura >0 && radio >0)
                 {
-                    area = 2 * Math.PI * radio * (altura + radio);
+                    area = conseguirArea(altura,radio);
                     base1 = conseguirbase(radio);
-                    volumen = base1 * altura;
+                    volumen = conseguirvolumen(base1,altura);
                     Console.WriteLine("EL Area es: " + area);
                     Console.WriteLine("El Volumen es: " + volumen);
                 }
@@ -31,7 +31,17 @@
                 }
                 contador = contador + 1;
                 Console.WriteLine("Los cilindros ingresados fueron: " + contador);
-            } while (!(altura == 0 && radio == 0));
+            } while (!(altura <= 0 && radio <= 0));
+        }
+
+        private static double conseguirvolumen(double base1, double altura)
+        {
+            return base1 * altura;
+        }
+
+        private static double conseguirArea(double altura, double radio)
+        {
+            return 2*Math.PI*radio*(altura+radio);
         }
 
         private static double conseguirbase(double radio)
